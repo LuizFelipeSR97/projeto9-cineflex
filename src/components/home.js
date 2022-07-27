@@ -4,9 +4,6 @@ import { Link } from "react-router-dom"
 export default function Home () {
     return (
     <div className="pagHome">
-        <Link to="/"><div class="header">
-            CINEFLEX
-        </div></Link>
         <div class="content">
             <div className="titulo">
                 Selecione o filme

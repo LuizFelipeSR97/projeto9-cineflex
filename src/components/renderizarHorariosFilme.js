@@ -1,19 +1,23 @@
+import { Link } from "react-router-dom"
+
 export default function RenderizarHorariosFilme(){
     return (
         <div className="datas">
             <h1>Quinta-feira - 24/06/2021</h1>
-            <div className="horario">
-                <div className="opcoesHorario">
-                    15:00
-                </div>
-                <div className="opcoesHorario">
-                    19:00
-                </div>
-                <div className="opcoesHorario">
-                    19:00
-                </div>
-                <div className="opcoesHorario">
-                    19:00
+            <div className="teste">
+                <div className="horario">
+                    <Link to="/assentos/idSessao"><div className="opcoesHorario">
+                        10:00
+                    </div></Link>
+                    <Link to="/assentos/idSessao"><div className="opcoesHorario">
+                        12:00
+                    </div></Link>
+                    <Link to="/assentos/idSessao"><div className="opcoesHorario">
+                        14:00
+                    </div></Link>
+                    <Link to="/assentos/idSessao"><div className="opcoesHorario">
+                        16:00
+                    </div></Link>
                 </div>
             </div>
         </div>
