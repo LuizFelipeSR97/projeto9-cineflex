@@ -41,6 +41,19 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
+}
+
+.mainContent{
+    width: 390px;
+    height: 100%;
+    margin-bottom: 190px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+
 }
 
 .content .titulo {
