@@ -1,11 +1,12 @@
 import RenderizarHorariosFilme from "./renderizarHorariosFilme"
+import { Link } from "react-router-dom"
 
 export default function Horarios () {
     return (
-        <div className="home">
-            <div class="header">
-                CINEFLEX
-            </div>
+        <div className="pagHorarios">
+            <Link to="/"><div class="header">
+            CINEFLEX
+        </div></Link>
             <div class="content">
                 <div className="titulo">
                     Selecione o horário

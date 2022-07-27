@@ -1,11 +1,12 @@
 import RenderizarCartaz from "./renderizarCartaz"
+import { Link } from "react-router-dom"
 
 export default function Home () {
     return (
-    <div className="home">
-        <div class="header">
+    <div className="pagHome">
+        <Link to="/"><div class="header">
             CINEFLEX
-        </div>
+        </div></Link>
         <div class="content">
             <div className="titulo">
                 Selecione o filme
