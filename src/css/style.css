@@ -54,7 +54,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-bottom: 77px
 }
 
@@ -73,6 +73,46 @@ body{
 .imagemFilme img{
     height: 193px;
     width: 129px;
+}
+
+.listaHorariosFilme{
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
+    overflow-y: scroll;
+}
+
+.datas{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.datas h1{
+    font-size: 20px;
+    font-weight: 400;
+    color: #293845;
+}
+
+.horario{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.opcoesHorario{
+    background-color: #E8833A;
+    margin-right: 10px;
+    height: 45px;
+    width: 85px;
+    border-radius: 3px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* HOME */

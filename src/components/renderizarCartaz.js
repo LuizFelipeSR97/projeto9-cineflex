@@ -1,11 +1,23 @@
-export default function renderizarCartaz(array){
-    array.map(cartaz => {
+export default function RenderizarCartaz({listaFilmes}){
+    return (listaFilmes.map (filme => 
         <div className="cartazFilme">
             <div className="fundoFilme">
                 <div className="imagemFilme">
-                    <img src="https://img.freepik.com/fotos-gratis/imagem-aproximada-em-tons-de-cinza-de-uma-aguia-careca-americana-em-um-fundo-escuro_181624-31795.jpg" alt=""/>
+                    <img src={filme.posterURL} alt=""/>
                 </div>
             </div>
         </div>
-    })
+    ))
 }
+
+// export default function RenderizarCartaz([listaFilmes]){
+//     listaFilmes.map(filme =>
+//         <div className="cartazFilme">
+//             <div className="fundoFilme">
+//                 <div className="imagemFilme">
+//                     <img src={filme} alt=""/>
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
