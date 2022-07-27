@@ -18,6 +18,8 @@ export default function Horarios () {
                     <RenderizarHorariosFilme />
                     <RenderizarHorariosFilme />
                     <RenderizarHorariosFilme />
+                    <RenderizarHorariosFilme />
+                    <RenderizarHorariosFilme />
                 </div>
             </div>
         </div>

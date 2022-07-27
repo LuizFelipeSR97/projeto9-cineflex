@@ -77,11 +77,14 @@ body{
 
 .listaHorariosFilme{
     width: 330px;
+    height: 100%;
+    margin-bottom: 77px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 10px;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .datas{
@@ -96,11 +99,13 @@ body{
     font-size: 20px;
     font-weight: 400;
     color: #293845;
+    width: 100%;
 }
 
 .horario{
     display: flex;
-    justify-content: flex-start;
+    width: 400px;
+    overflow-x: auto;
 }
 
 .opcoesHorario{
