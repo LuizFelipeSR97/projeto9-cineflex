@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom"
 import Lugar from "./lugar"
+import { useParams } from "react-router-dom";
 
 export default function Sessao() {
+
+    const { idSessao } = useParams();
+
     return (
         <div className="pagSessao">
             <div class="content">

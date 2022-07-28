@@ -7,6 +7,20 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.loading{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+.loading img{
+    height: 100px;
+    width: 100px;
+}
+
 a:-webkit-any-link {
     text-decoration: none;
     color: inherit;
@@ -159,7 +173,6 @@ body{
     font-size: 26px;
     font-weight: 400;
 }
-
 
 .footer .fundoFilme{
     height: 89px;

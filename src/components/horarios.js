@@ -1,7 +1,24 @@
-import RenderizarHorariosFilme from "./renderizarHorariosFilme"
-import { Link } from "react-router-dom"
+import RenderizarDiasFilme from "./renderizarDiasFilme"
+import axios from "axios";
+import {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
 
 export default function Horarios () {
+
+    const { idFilme } = useParams();
+    const [items, setItems] = useState(null);
+
+    useEffect(() => {
+        const request = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);
+        request.then(resp => {
+            setItems(resp.data);
+        });
+    },[idFilme]);
+
+    if (items===null){
+        return <div className="loading"><img src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator.gif" alt=""/></div>;
+    }
+
     return (
         <div className="pagHorarios">
             <div class="content">
@@ -9,15 +26,7 @@ export default function Horarios () {
                     Selecione o horário
                 </div>
                 <div className="listaHorariosFilme">
-                    <RenderizarHorariosFilme />
-                    <RenderizarHorariosFilme />
-                    <RenderizarHorariosFilme />
-                    <RenderizarHorariosFilme />
-                    <RenderizarHorariosFilme />
-                    <RenderizarHorariosFilme />
-                    <RenderizarHorariosFilme />
-                    <RenderizarHorariosFilme />
-                    <RenderizarHorariosFilme />
+                    <RenderizarDiasFilme infoFilme={items.days}/>
                 </div>
             </div>
             <div className="footer">
@@ -25,12 +34,12 @@ export default function Horarios () {
                     <div className="poster">
                         <div className="fundoFilme">
                             <div className="imagemFilme">
-                                <img src="https://br.web.img2.acsta.net/c_310_420/pictures/20/02/03/15/22/4954456.jpg" alt=""/>
+                                <img src={items.posterURL} alt=""/>
                             </div>
                         </div>
                     </div>
                     <div className="titulo">
-                        <h1>TITULO</h1>
+                        <h1>{items.title}</h1>
                     </div>
                 </div>
             </div>
