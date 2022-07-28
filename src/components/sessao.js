@@ -1,10 +1,24 @@
 import { Link } from "react-router-dom"
-import Lugar from "./lugar"
+import axios from "axios";
+import {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
+import RenderizarAssentos from "./renderizarAssentos";
 
 export default function Sessao() {
 
     const { idSessao } = useParams();
+    const [items, setItems] = useState(null);
+
+    useEffect(() => {
+        const request = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`);
+        request.then(resp => {
+            setItems(resp.data);
+        });
+    },[idSessao]);
+
+    if (items===null){
+        return <div className="loading"><img src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator.gif" alt=""/></div>;
+    }
 
     return (
         <div className="pagSessao">
@@ -12,59 +26,9 @@ export default function Sessao() {
                 <div className="titulo">
                     Selecione o(s) assento(s)
                 </div>
-                <div className="mainContent">
-                    
+                <div className="mainContent">                    
                     <div className="assentos">
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
-                        <Lugar />
+                        <RenderizarAssentos assentosFilme={items.seats}/>
                     </div>
                     <div className="legendaAssentos">
                         <div className="assento">
@@ -86,7 +50,7 @@ export default function Sessao() {
                         <h1>CPF do comprador</h1>
                         <input placeholder={"Digite seu CPF..."}/>
                     </div>
-                    <Link to="/sucesso"><div className="botaoReservar">
+                    <Link to="/sucesso"><div className="botao">
                         Reservar assento(s)
                     </div></Link>
                     <div className="footer">
@@ -94,12 +58,13 @@ export default function Sessao() {
                         <div className="poster">
                             <div className="fundoFilme">
                                 <div className="imagemFilme">
-                                    <img src="https://br.web.img2.acsta.net/c_310_420/pictures/20/02/03/15/22/4954456.jpg" alt=""/>
+                                    <img src={items.movie.posterURL} alt=""/>
                                 </div>
                             </div>
                         </div>
                         <div className="titulo">
-                            <h1>TITULO</h1>
+                            <h1>{items.movie.title}</h1>
+                            <h1>{items.day.weekday} - {items.name}</h1>
                         </div>
                     </div>
                     </div>

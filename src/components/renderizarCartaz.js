@@ -7,7 +7,7 @@ export default function RenderizarCartaz(){
     const [items, setItems] = useState(null);
 
     useEffect(() => {
-        const request = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
+        const request = axios.get("https://mock-api.driven.com.br/api/v7/cineflex/movies");
         request.then(resp => {
             setItems(resp.data);
         });

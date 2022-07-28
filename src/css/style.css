@@ -13,12 +13,13 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 50px;
 }
 
 .loading img{
     height: 100px;
     width: 100px;
+    position: fixed;
+    top: 200px;
 }
 
 a:-webkit-any-link {
@@ -169,11 +170,6 @@ body{
     height: 100%;
 }
 
-.footer .center h1{
-    font-size: 26px;
-    font-weight: 400;
-}
-
 .footer .fundoFilme{
     height: 89px;
     background-color: #FFFFFF;
@@ -202,11 +198,20 @@ body{
 
 .footer .titulo{
     padding-left: 5px;
+    padding-right: 5px;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.footer .titulo h1{
+    font-size: 24px;
+    font-weight: 400;
+    color: #293845;
+    margin: 0;
 }
 
 .assentos{
@@ -289,7 +294,7 @@ body{
     margin: 0 0 5px 0;
 }
 
-.botaoReservar{
+.botao{
     background-color: #E8833A;
     color: #FFFFFF;
     height: 40px;
@@ -300,6 +305,64 @@ body{
     align-items: center;
     border-radius: 3px;
     margin-top: 25px;
+}
+
+/* TELA SUCESSO NO PEDIDO */
+
+.tituloCentro{
+    width: 150px;
+    text-align: center;
+}
+
+.infoSessao{
+    width: 100%;
+    padding: 0 30px;
+}
+
+.infoAssentos{
+    width: 100%;
+    padding: 0 30px; 
+}
+
+.infoComprador{
+    width: 100%;
+    padding: 0 30px; 
+    margin-bottom: 40px;
+}
+
+.pagSucesso h1{
+    color: #293845;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.pagSucesso h2{
+    color: #293845;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.pagSucesso h3{
+    color: #247A6B;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.botao{
+    background-color: #E8833A;
+    color: #FFFFFF;
+    height: 40px;
+    width: 225px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    margin-top: 40px;
 }
 
 /* HOME */

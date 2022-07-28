@@ -9,7 +9,7 @@ export default function Horarios () {
     const [items, setItems] = useState(null);
 
     useEffect(() => {
-        const request = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);
+        const request = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${idFilme}/showtimes`);
         request.then(resp => {
             setItems(resp.data);
         });
