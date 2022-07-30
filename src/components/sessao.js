@@ -1,13 +1,22 @@
-import { Link } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import axios from "axios";
 import {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
 import RenderizarAssentos from "./renderizarAssentos";
+
+const assentos = [{id: 101, numero: 1},{id: 103, numero: 3},{id: 105, numero: 5}]
 
 export default function Sessao() {
 
     const { idSessao } = useParams();
     const [items, setItems] = useState(null);
+    const navigate = useNavigate();
+
+    function submitForm(event){
+
+        event.preventDefault();
+        console.log(`Nome do comprador: ${event.target.nome.value}, CPF do comprador: ${event.target.cpf.value}, Assentos comprados: passar o id e o name deles`)
+        navigate("/sucesso",{state:{nome: event.target.nome.value, cpf: event.target.cpf.value, idAssentos:[100,101,102], numeroAssentos:[1,2,3], tituloFilme: items.movie.title, sessao: `${items.day.date} ${items.name}`, assentos: assentos}})
+    }
 
     useEffect(() => {
         const request = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`);
@@ -44,29 +53,34 @@ export default function Sessao() {
                             <h1>Indisponível</h1>
                         </div>
                     </div>
-                    <div className="dadosComprador">
-                        <h1>Nome do comprador</h1>
-                        <input placeholder={"Digite seu nome..."}/>
-                        <h1>CPF do comprador</h1>
-                        <input placeholder={"Digite seu CPF..."}/>
-                    </div>
-                    <Link to="/sucesso"><div className="botao">
-                        Reservar assento(s)
-                    </div></Link>
+                    <form onSubmit={submitForm}>
+                        <div className="dadosComprador">
+                            <h1>Nome do comprador</h1>
+                            <input placeholder={"Digite seu nome..."} name="nome" required/>
+                            <h1>CPF do comprador</h1>
+                            <input placeholder={"Digite seu CPF..."} type="number" name="cpf" required/>
+                        </div>
+                        <button type="submit">
+                            Reservar assento(s)
+                        </button>
+                        <Link to="/sucesso"><div className="botao">
+                            Reservar assento(s)
+                        </div></Link>
+                    </form>
                     <div className="footer">
-                    <div className="center">
-                        <div className="poster">
-                            <div className="fundoFilme">
-                                <div className="imagemFilme">
-                                    <img src={items.movie.posterURL} alt=""/>
+                        <div className="center">
+                            <div className="poster">
+                                <div className="fundoFilme">
+                                    <div className="imagemFilme">
+                                        <img src={items.movie.posterURL} alt=""/>
+                                    </div>
                                 </div>
                             </div>
+                            <div className="titulo">
+                                <h1>{items.movie.title}</h1>
+                                <h1>{items.day.weekday} - {items.name}</h1>
+                            </div>
                         </div>
-                        <div className="titulo">
-                            <h1>{items.movie.title}</h1>
-                            <h1>{items.day.weekday} - {items.name}</h1>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>
