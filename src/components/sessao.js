@@ -58,14 +58,13 @@ export default function Sessao() {
                             <h1>Nome do comprador</h1>
                             <input placeholder={"Digite seu nome..."} name="nome" required/>
                             <h1>CPF do comprador</h1>
-                            <input placeholder={"Digite seu CPF..."} type="number" name="cpf" required/>
+                            <input placeholder={"Digite seu CPF..."} maxLength='11' name="cpf" required/>
                         </div>
-                        <button type="submit">
-                            Reservar assento(s)
-                        </button>
-                        <Link to="/sucesso"><div className="botao">
-                            Reservar assento(s)
-                        </div></Link>
+                        <div className="botaoReservar">
+                            <button type="submit">
+                                Reservar assento(s)
+                            </button>
+                        </div>
                     </form>
                     <div className="footer">
                         <div className="center">

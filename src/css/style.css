@@ -280,6 +280,12 @@ body{
     border-color: #F7C52B;
 }
 
+.botaoReservar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .dadosComprador input{
     width: 325px;
     height: 50px;
