@@ -10,6 +10,7 @@ export default function Sessao() {
     const { idSessao } = useParams();
     const [items, setItems] = useState(null);
     const navigate = useNavigate();
+    const assentosEscolhidos=[];
 
     function submitForm(event){
 
@@ -37,7 +38,7 @@ export default function Sessao() {
                 </div>
                 <div className="mainContent">                    
                     <div className="assentos">
-                        <RenderizarAssentos assentosFilme={items.seats}/>
+                        <RenderizarAssentos assentosFilme={items.seats} assentosEscolhidos={assentosEscolhidos}/>
                     </div>
                     <div className="legendaAssentos">
                         <div className="assento">
