@@ -8,7 +8,7 @@ export default function App () {
     
     return (
     <div className="pagina">
-        <div class="header">
+        <div className="header">
             CINEFLEX
         </div>
         <BrowserRouter>

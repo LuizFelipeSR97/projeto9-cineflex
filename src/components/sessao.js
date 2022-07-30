@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios";
 import {useState, useEffect} from "react";
 import RenderizarAssentos from "./renderizarAssentos";
@@ -10,13 +10,29 @@ export default function Sessao() {
     const { idSessao } = useParams();
     const [items, setItems] = useState(null);
     const navigate = useNavigate();
-    const assentosEscolhidos=[];
+    const [assentosEscolhidos,setAssentosEscolhidos]=useState([]);
+    const [ids,setIds]=useState([])
+
+    useEffect(() => {
+        setIds(assentosEscolhidos.map(assento => assento.id))
+        },[assentosEscolhidos]);
 
     function submitForm(event){
 
         event.preventDefault();
-        console.log(`Nome do comprador: ${event.target.nome.value}, CPF do comprador: ${event.target.cpf.value}, Assentos comprados: passar o id e o name deles`)
-        navigate("/sucesso",{state:{nome: event.target.nome.value, cpf: event.target.cpf.value, idAssentos:[100,101,102], numeroAssentos:[1,2,3], tituloFilme: items.movie.title, sessao: `${items.day.date} ${items.name}`, assentos: assentos}})
+        if (assentosEscolhidos.length===0){
+            alert ("Por favor, escolha os assentos desejados.")
+        } else if(event.target.cpf.value.length<11){
+            alert ("Você deve digitar um CPF de 11 dígitos")
+        } else {
+
+            const request = axios.post(`https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many`,{ids: ids, name: event.target.nome.value, cpf: event.target.cpf.value});
+            request.then(
+                navigate("/sucesso",{state:{nome: event.target.nome.value, cpf: event.target.cpf.value, tituloFilme: items.movie.title, sessao: `${items.day.date} ${items.name}`, assentos: assentos, assentosEscolhidos: assentosEscolhidos}})
+                );
+
+            
+        }  
     }
 
     useEffect(() => {
@@ -32,13 +48,13 @@ export default function Sessao() {
 
     return (
         <div className="pagSessao">
-            <div class="content">
+            <div className="content">
                 <div className="titulo">
                     Selecione o(s) assento(s)
                 </div>
                 <div className="mainContent">                    
                     <div className="assentos">
-                        <RenderizarAssentos assentosFilme={items.seats} assentosEscolhidos={assentosEscolhidos}/>
+                        <RenderizarAssentos assentosFilme={items.seats} assentosEscolhidos={assentosEscolhidos} setAssentosEscolhidos={setAssentosEscolhidos}/>
                     </div>
                     <div className="legendaAssentos">
                         <div className="assento">

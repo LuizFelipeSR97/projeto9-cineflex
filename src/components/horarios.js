@@ -21,7 +21,7 @@ export default function Horarios () {
 
     return (
         <div className="pagHorarios">
-            <div class="content">
+            <div className="content">
                 <div className="titulo">
                     Selecione o horário
                 </div>
